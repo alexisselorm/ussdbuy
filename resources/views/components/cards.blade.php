@@ -9,7 +9,7 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <h5 class="mb-2 font-bold text-black">53,000</h5>
+                                <h5 class="mb-2 font-bold text-black">{{ $numbers->count() }}</h5>
                                 <p class="mb-0 text-black dark:opacity-60">
                                     <span class="text-sm font-bold leading-normal text-laravel-500">TOTAL NUMBERS</span>
                                 </p>
@@ -34,7 +34,11 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <h5 class="mb-2 font-bold text-black">53,000</h5>
+                                <h5 class="mb-2 font-bold text-black">
+                                    @foreach ($numbers as $number)
+                                        {{ $number->isActive ?? $number->count() }}
+                                    @endforeach
+                                </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
                                     <span class="text-sm font-bold leading-normal text-laravel-500">ACTIVE
                                         NUMBERS</span>
@@ -60,9 +64,13 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <h5 class="mb-2 font-bold text-black">53,000</h5>
+                                <h5 class="mb-2 font-bold text-black">
+                                    @foreach ($numbers as $number)
+                                        {{ !$number->isActive ? $number->count() : 0 }}
+                                    @endforeach
+                                </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
-                                    <span class="text-sm font-bold leading-normal text-laravel-500">BLACKLIST
+                                    <span class="text-sm font-bold leading-normal text-laravel-500">BLACKLISTED
                                     </span>
                                 </p>
                             </div>
