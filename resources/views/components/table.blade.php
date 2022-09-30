@@ -60,7 +60,7 @@
                         </td>
                     </tr>
                 @endforeach
-
+                {{ $numbers->links() }}
             </tbody>
         </table>
     </div>

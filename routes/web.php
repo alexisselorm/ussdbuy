@@ -20,7 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $numbers = Number::latest()->get();
+    $numbers = Number::latest()->paginate(15);
     return view('dashboard', ['numbers' => $numbers]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
