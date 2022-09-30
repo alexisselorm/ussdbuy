@@ -56,7 +56,7 @@ php artisan serve
 
 ###
 
-Import the attached requests.json file into a client and test the api routes.
+Import the attached BLUESPACE.postman_collection.json file into a client and test the api routes.
 
 ```
 
