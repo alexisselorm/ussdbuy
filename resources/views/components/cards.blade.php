@@ -41,8 +41,7 @@
 
                                 </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
-                                    <span class="text-sm font-bold leading-normal text-laravel-500">ACTIVE
-                                        NUMBERS</span>
+                                    <span class="text-sm font-bold leading-normal text-laravel-500">WHITELISTED</span>
                                 </p>
                             </div>
                         </div>

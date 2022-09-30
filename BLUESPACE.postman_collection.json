@@ -1,0 +1,72 @@
+{
+	"info": {
+		"_postman_id": "18486043-c6ca-442c-b87d-9a14cdb5971a",
+		"name": "BLUESPACE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SHOW BLACKLISTED NUMBERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/number/allblacklist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"number",
+						"allblacklist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SHOW WHITELISTED NUMBERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/number/allwhitelist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"number",
+						"allwhitelist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SHOW NUMBER STATUS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/number/allwhitelist",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"number",
+						"allwhitelist"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

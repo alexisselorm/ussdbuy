@@ -10,6 +10,10 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-sidebar />
                     <x-cards :numbers="$numbers" />
+                    {{-- <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 3000)">
+                        <h1>Welcome from alert</h1>
+                      </div> --}}
+                    <x-flash-message />
                     <a href="{{ route('number.create') }}">
                         <x-button>ADD A NEW NUMBER</x-button>
                     </a>
@@ -19,5 +23,4 @@
             </div>
         </div>
     </div>
-    <x-flash-message />
 </x-app-layout>

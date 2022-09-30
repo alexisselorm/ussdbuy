@@ -69,9 +69,10 @@ class NumberController extends Controller
     {
 
         $number->isWhitelisted ? $number->isWhitelisted = 0 : $number->isWhitelisted = 1;
+        $message = $number->isWhitelisted ? 'whitelisted' : 'blacklisted';
         $number->save();
         return redirect(route('dashboard'))->with([
-            'message' => 'blocked',
+            'message' => 'Number has been '.$message,
             'status' => 1,
         ]);
     }
