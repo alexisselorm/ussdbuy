@@ -72,7 +72,7 @@ class NumberController extends Controller
         $number->save();
         return redirect(route('dashboard'))->with([
             'message' => 'blocked',
-            'status' => 0,
+            'status' => 1,
         ]);
     }
 

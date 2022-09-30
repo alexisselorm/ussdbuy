@@ -9,14 +9,15 @@
             <div class="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <x-sidebar />
-                    <x-cards :numbers="$numbers"/>
+                    <x-cards :numbers="$numbers" />
                     <a href="{{ route('number.create') }}">
-                    <x-button >ADD A NEW NUMBER</x-button>
+                        <x-button>ADD A NEW NUMBER</x-button>
                     </a>
 
-                    <x-table :numbers="$numbers"/>
+                    <x-table :numbers="$numbers" />
                 </div>
             </div>
         </div>
     </div>
+    <x-flash-message />
 </x-app-layout>
