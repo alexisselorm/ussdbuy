@@ -42,7 +42,6 @@ class NumberController extends Controller
 
     public function edit(Number $number)
     {
-        // dd($player);
         return view('number.edit', [
             'number' => $number,
         ]);

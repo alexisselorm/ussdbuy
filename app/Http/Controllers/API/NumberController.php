@@ -31,7 +31,6 @@ class NumberController extends Controller
      */
     public function show($number)
     {
-        // dd($number);
         $number = Number::where('number', $number)->first();
 
         if($number){
