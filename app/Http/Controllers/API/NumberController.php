@@ -32,11 +32,17 @@ class NumberController extends Controller
     public function show($number)
     {
         // dd($number);
-        $number = Number::where('number', 'like', $number)->first();
+        $number = Number::where('number', $number)->first();
 
-        $message = $number->isWhitelisted ? 'active' : 'blocked';
+        if($number){
 
-        return response()->json(['number' => $number['number'], 'message' => $message, 'status' => 1], 200);
+            $message = $number->isWhitelisted ? 'active' : 'blocked';
+
+            return response()->json(['number' => $number['number'], 'message' => $message, 'status' => 1], 200);
+        }else{
+            return response()->json(['message' => 'Number not found', 'status' => 0], 404);
+
+        }
 
         // return response()->json(['number' => $number, $message, 'status' => 1], 200);
     }

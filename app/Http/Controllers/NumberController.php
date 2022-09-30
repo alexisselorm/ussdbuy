@@ -23,7 +23,7 @@ class NumberController extends Controller
     public function store()
     {
         $attributes = request()->validate([
-            'number' => ['required'],
+            'number' => ['required', 'min:10', 'unique:numbers'],
         ]);
         Number::create($attributes);
 
