@@ -4,6 +4,26 @@
 
 # PORTAL
 
+### Installation
+
+This app uses Laravel 9.32. The authentication is handled by Laravel Breeze. Start by installing Laravel dependencies
+
+```
+composer install
+```
+
+And npm dependencies
+
+```
+npm install
+```
+
+The latest version of Laravel uses Vite for building assets(JS and TailwindCSS), therefore you should run
+
+```
+npm run dev
+```
+
 ### Database Setup
 
 This app uses MySQL. To use something different, open up config/Database.php and change the default driver.
