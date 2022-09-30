@@ -29,7 +29,7 @@ class NumberController extends Controller
 
         return redirect(route('dashboard'))->with([
             'message' => 'active',
-            'status' => 1,
+            'status_code' => 1,
         ]);
     }
 
@@ -50,7 +50,7 @@ class NumberController extends Controller
 
         return redirect(route('dashboard'))->with([
             'message' => 'active',
-            'status' => 1,
+            'status_code' => 1,
         ]);
     }
 
@@ -60,7 +60,7 @@ class NumberController extends Controller
 
         return redirect(route('dashboard'))->with([
             'message' => 'number deleted successfully',
-            'status' => 1,
+            'status_code' => 1,
         ]);
 
     }
@@ -73,7 +73,7 @@ class NumberController extends Controller
         $number->save();
         return redirect(route('dashboard'))->with([
             'message' => 'Number has been '.$message,
-            'status' => 1,
+            'status_code' => 1,
         ]);
     }
 
