@@ -3,83 +3,42 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Number;
 
 class NumberController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function showAllWhiteListed()
     {
-        //
+        $number = Number::where('isWhitelisted', 1)->get();
+
+        return response()->json(['number' => $number, 'message' => 'active', 'status' => 1], 200);
+    }
+
+    public function showAllBlackListed()
+    {
+        $number = Number::where('isWhitelisted', 0)->get();
+
+        return response()->json(['number' => $number, 'message' => 'blocked', 'status' => 1], 200);
     }
 
     /**
-     * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Number  $number
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($number)
     {
-        //
+        // dd($number);
+        $number = Number::where('number', 'like', $number)->first();
+
+        $message = $number->isWhitelisted ? 'active' : 'blocked';
+
+        return response()->json(['number' => $number['number'], 'message' => $message, 'status' => 1], 200);
+
+        // return response()->json(['number' => $number, $message, 'status' => 1], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

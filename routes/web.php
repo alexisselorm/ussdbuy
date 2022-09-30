@@ -21,7 +21,6 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $numbers = Number::latest()->get();
-    // $countisAct=
     return view('dashboard', ['numbers' => $numbers]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 

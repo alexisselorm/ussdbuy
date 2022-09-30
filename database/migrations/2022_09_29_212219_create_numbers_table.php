@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('numbers', function (Blueprint $table) {
             $table->id();
             $table->string('number');
-            $table->boolean('isActive')->default(true);
+            $table->boolean('isWhitelisted')->default(true);
             $table->timestamps();
         });
     }

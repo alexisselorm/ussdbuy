@@ -18,7 +18,7 @@
                             </div>
 
                         <td class="px-6 py-3 text-center">
-                            @if ($number->isActive)
+                            @if ($number->isWhitelisted)
                                 <span class="px-3 py-1 text-xs text-green-600 bg-green-200 rounded-full">Active</span>
                             @else
                                 <span class="px-3 py-1 text-xs text-red-600 bg-red-200 rounded-full">Blocked</span>
@@ -49,8 +49,11 @@
 
                                 <div>
                                     <a href="{{ route('number.blacklist', $number->id) }}">
-                                        <span class="px-3 py-1 text-xs text-red-600 bg-red-200">Blacklist</span>
-
+                                        @if (!$number->isWhitelisted)
+                                            <span class="px-3 py-1 text-xs text-green-600 bg-green-200">Whitelist</span>
+                                        @else
+                                            <span class="px-3 py-1 text-xs text-red-600 bg-red-200">Blacklist</span>
+                                        @endif
                                     </a>
                                 </div>
                             </div>

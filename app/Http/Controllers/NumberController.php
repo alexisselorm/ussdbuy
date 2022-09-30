@@ -68,7 +68,7 @@ class NumberController extends Controller
     public function blacklist(Number $number)
     {
 
-        $number->isActive = 0;
+        $number->isWhitelisted ? $number->isWhitelisted = 0 : $number->isWhitelisted = 1;
         $number->save();
         return redirect(route('dashboard'))->with([
             'message' => 'blocked',

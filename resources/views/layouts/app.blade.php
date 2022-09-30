@@ -11,8 +11,8 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         {{-- Fontawesome --}}
-        <script defer src="https://use.fontawesome.com/62e2ed163b.js"></script>
-        
+        <script deferpi src="https://use.fontawesome.com/62e2ed163b.js"></script>
+
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>

@@ -37,7 +37,7 @@
                             <div>
                                 <h5 class="mb-2 font-bold text-black">
 
-                                    {{ $numbers->where('isActive', 1)->count() }}
+                                    {{ $numbers->where('isWhitelisted', 1)->count() }}
 
                                 </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
@@ -66,7 +66,7 @@
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
                                 <h5 class="mb-2 font-bold text-black">
-                                    {{ $numbers->where('isActive', 0)->count() }}
+                                    {{ $numbers->where('isWhitelisted', 0)->count() }}
 
                                 </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
