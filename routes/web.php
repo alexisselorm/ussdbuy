@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\NumberController;
-use App\Models\Number;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,20 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
  */
 
-Route::get('/', function () {
-    return view('welcome');
+// Always redirects to login page if not logged in
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('auth.login');
+    });
 });
 
-Route::get('/dashboard', function () {
-    $numbers = Number::latest()->paginate(15);
-    return view('dashboard', ['numbers' => $numbers]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
 
-Route::get('/number/create', [NumberController::class, 'create'])->name('number.create');
-Route::post('/number/store', [NumberController::class, 'store'])->name('number.store');
-Route::get('/number/{number}/edit', [NumberController::class, 'edit'])->name('number.edit');
-Route::put('/number/{number}', [NumberController::class, 'update'])->name('number.update');
-Route::get('/number/destroy', [NumberController::class, 'destroy'])->name('number.delete');
-Route::get('/number/{number}/blacklist', [NumberController::class, 'blacklist'])->name('number.blacklist');
+    Route::get('/dashboard', [NumberController::class, 'index'])->name('dashboard');
 
+    Route::prefix('number')->group(function () {
+        Route::get('/create', [NumberController::class, 'create'])->name('number.create');
+        Route::post('/store', [NumberController::class, 'store'])->name('number.store');
+        Route::get('/{number}/edit', [NumberController::class, 'edit'])->name('number.edit');
+        Route::put('/{number}', [NumberController::class, 'update'])->name('number.update');
+        Route::delete('/{number}', [NumberController::class, 'destroy'])->name('number.delete');
+        Route::get('/{number}/blacklist', [NumberController::class, 'blacklist'])->name('number.blacklist');
+    });
+
+});
 require __DIR__ . '/auth.php';

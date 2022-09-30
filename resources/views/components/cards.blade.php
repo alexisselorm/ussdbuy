@@ -1,3 +1,5 @@
+@props(['card'])
+{{-- {{ dd($card) }} --}}
 <div class="w-full px-6 py-6 mx-auto">
     <!-- row 1 -->
     <div class="flex flex-wrap -mx-3">
@@ -9,7 +11,7 @@
                     <div class="flex flex-row -mx-3">
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
-                                <h5 class="mb-2 font-bold text-black">{{ $numbers->count() }}</h5>
+                                <h5 class="mb-2 font-bold text-black">{{ $card['total'] }}</h5>
                                 <p class="mb-0 text-black dark:opacity-60">
                                     <span class="text-sm font-bold leading-normal text-laravel-500">TOTAL NUMBERS</span>
                                 </p>
@@ -37,7 +39,8 @@
                             <div>
                                 <h5 class="mb-2 font-bold text-black">
 
-                                    {{ $numbers->where('isWhitelisted', 1)->count() }}
+                                    {{-- ACTIVE --}}
+                                    {{ $card['active'] }}
 
                                 </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
@@ -65,8 +68,7 @@
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
                                 <h5 class="mb-2 font-bold text-black">
-                                    {{ $numbers->where('isWhitelisted', 0)->count() }}
-
+                                    {{ $card['blacklisted'] }}
                                 </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
                                     <span class="text-sm font-bold leading-normal text-laravel-500">BLACKLISTED

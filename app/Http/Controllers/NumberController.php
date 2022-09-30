@@ -9,10 +9,17 @@ class NumberController extends Controller
     //
     public function index()
     {
-        $numbers = Number::all();
+        $numbers = Number::latest()->paginate(15);
 
+        // Card variables
+        $total = Number::all()->count();
+        $active = Number::where('isWhitelisted', 1)->count();
+        $blaclisted = Number::where('isWhitelisted', 0)->count();
+
+        $card_variable = array('total' => $total, 'active' => $active, 'blacklisted' => $blaclisted);
         return view('dashboard', [
             'numbers' => $numbers,
+            'card' => $card_variable,
         ]);
     }
     public function create()
@@ -28,7 +35,7 @@ class NumberController extends Controller
         Number::create($attributes);
 
         return redirect(route('dashboard'))->with([
-            'message' => 'active',
+            'message' => 'Number has been added and whitelisted',
             'status_code' => 1,
         ]);
     }
@@ -59,7 +66,7 @@ class NumberController extends Controller
         $number->delete();
 
         return redirect(route('dashboard'))->with([
-            'message' => 'number deleted successfully',
+            'message' => 'Number deleted successfully',
             'status_code' => 1,
         ]);
 
@@ -72,7 +79,7 @@ class NumberController extends Controller
         $message = $number->isWhitelisted ? 'whitelisted' : 'blacklisted';
         $number->save();
         return redirect(route('dashboard'))->with([
-            'message' => 'Number has been '.$message,
+            'message' => 'Number has been ' . $message,
             'status_code' => 1,
         ]);
     }
