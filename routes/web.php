@@ -20,14 +20,16 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $numbers = Number::all();
+    $numbers = Number::latest()->get();
+    // $countisAct=
     return view('dashboard', ['numbers' => $numbers]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/number/create', [NumberController::class, 'create'])->name('number.create');
 Route::post('/number/store', [NumberController::class, 'store'])->name('number.store');
 Route::get('/number/{number}/edit', [NumberController::class, 'edit'])->name('number.edit');
-Route::get('/number/{number}', [NumberController::class, 'edit'])->name('number.update');
-Route::get('/number/destroy', [NumberController::class, 'edit'])->name('number.delete');
+Route::put('/number/{number}', [NumberController::class, 'update'])->name('number.update');
+Route::get('/number/destroy', [NumberController::class, 'destroy'])->name('number.delete');
+Route::get('/number/{number}/blacklist', [NumberController::class, 'blacklist'])->name('number.blacklist');
 
 require __DIR__ . '/auth.php';

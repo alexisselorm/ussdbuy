@@ -26,6 +26,7 @@
             </div>
         </div>
 
+
         {{-- CARD 2 --}}
         <div class="w-full max-w-full px-3 mb-6 sm:w-1/2 sm:flex-none xl:mb-0 xl:w-1/4">
             <div
@@ -35,9 +36,9 @@
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
                                 <h5 class="mb-2 font-bold text-black">
-                                    @foreach ($numbers as $number)
-                                        {{ $number->isActive ?? $number->count() }}
-                                    @endforeach
+
+                                    {{ $numbers->where('isActive', 1)->count() }}
+
                                 </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
                                     <span class="text-sm font-bold leading-normal text-laravel-500">ACTIVE
@@ -65,9 +66,8 @@
                         <div class="flex-none w-2/3 max-w-full px-3">
                             <div>
                                 <h5 class="mb-2 font-bold text-black">
-                                    @foreach ($numbers as $number)
-                                        {{ !$number->isActive ? $number->count() : 0 }}
-                                    @endforeach
+                                    {{ $numbers->where('isActive', 0)->count() }}
+
                                 </h5>
                                 <p class="mb-0 text-black dark:opacity-60">
                                     <span class="text-sm font-bold leading-normal text-laravel-500">BLACKLISTED

@@ -41,4 +41,39 @@ class NumberController extends Controller
         ]);
     }
 
+    public function update(Number $number)
+    {
+        $attributes = request()->validate([
+            'number' => ['required', 'min:10'],
+        ]);
+        $number->update($attributes);
+
+        return redirect(route('dashboard'))->with([
+            'message' => 'active',
+            'status' => 1,
+        ]);
+    }
+
+    public function destroy(Number $number)
+    {
+        $number->delete();
+
+        return redirect(route('dashboard'))->with([
+            'message' => 'number deleted successfully',
+            'status' => 1,
+        ]);
+
+    }
+
+    public function blacklist(Number $number)
+    {
+
+        $number->isActive = 0;
+        $number->save();
+        return redirect(route('dashboard'))->with([
+            'message' => 'blocked',
+            'status' => 0,
+        ]);
+    }
+
 }
